@@ -1,14 +1,8 @@
 {
   "name": "bind-methods",
-  "repo": "",
-  "description": "Plugin for view to automatically bind all functions to the view",
-  "version": "0.0.1",
-  "keywords": [],
-  "license": "MIT",
-  "dependencies": {
-  },
+  "version": "1.0.0",
   "development": {
-    "ripplejs/ripple": "0.2.0",
+    "ripplejs/ripple": "*",
     "component/assert": "*"
   },
   "scripts": [

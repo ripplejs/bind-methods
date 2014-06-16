@@ -6,7 +6,7 @@ describe('view-bind', function(){
   var View;
 
   it('should bind functions to the view', function (done) {
-    View = ripple('<div></div>').use(bind);
+    View = ripple('<div></div>').use(bind(['tick']));
     View.prototype.tick = function(){
       assert(this instanceof View);
       done();

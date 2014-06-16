@@ -1,7 +1,9 @@
-module.exports = function(View) {
-  View.created(function(){
-    for(var key in this) {
-      if(typeof this[key] === 'function') this[key] = this[key].bind(this);
-    }
-  });
+module.exports = function(methods) {
+  return function(View) {
+    View.on('construct', function(view){
+      methods.forEach(function(name){
+        view[name] = view[name].bind(view);
+      });
+    });
+  };
 };

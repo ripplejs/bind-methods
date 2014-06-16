@@ -12,18 +12,34 @@
 
 ## API
 
+Here's a basic view that counts every second.
+
 ```js
-View = ripple('<div></div>')
-  .use(bind);
+var ripple = require('ripple');
+var bind = require('bind');
+
+View = ripple('<div>{{seconds}}</div>')
+  .attr('seconds', { default: 0 })
+  .use(bind(['tick']));
 
 View.prototype.tick = function(){
-  assert(this instanceof View);
+  this.seconds++;
 };
 
 var view = new View();
+```
 
+Now the method `tick` will always be called in the correct context of the view:
+
+```
 setTimeout(view.tick, 1000);
 ```
+
+So we don't have to `.bind(view)` or create an anonymous function.
+
+### bind([methods...])
+
+`bind` returns a plugin that will bind each of the methods to the view.
 
 ## License
 
